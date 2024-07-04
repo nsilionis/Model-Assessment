@@ -665,7 +665,7 @@ class BMU(DataPrep, EBModels, SurrModels):
             NMSE of the strain response posterior.
         """ 
 
-        nmse = (100/(self.data.var()*len(self.data)))*np.sqrt((self.fwd_model.forward(e=e, dt=0)-self.data).T@(self.fwd_model.forward(e, dt=0)-self.data))
+        nmse = (100/(self.data.var()*len(self.data)))*((self.fwd_model.forward(e=e, dt=0)-self.data).T@(self.fwd_model.forward(e, dt=0)-self.data))
 
         return nmse
 
@@ -1003,7 +1003,7 @@ class DamageDiag(DataPrep, EBModels, SurrModels):
             NMSE of the strain response posterior.
         """ 
 
-        nmse = (100/(self.data.var()*len(self.data)))*np.sqrt((self.fwd_model.forward(e=self.ym, dt=dt)-self.data).T@(self.fwd_model.forward(e=self.ym, dt=dt)-self.data))
+        nmse = (100/(self.data.var()*len(self.data)))*((self.fwd_model.forward(e=self.ym, dt=dt)-self.data).T@(self.fwd_model.forward(e=self.ym, dt=dt)-self.data))
 
         return nmse
 
